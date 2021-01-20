@@ -773,7 +773,11 @@ def main(arguments):
         pass
 
     elif opts.operation == 'takeownership':
-        SEDConfig.takeOwnership()
+        if SEDConfig.SED.SSC == "Enterprise":
+            userList = ["SID", "EraseMaster", "BandMaster0", "BandMaster1"]
+        else:
+            userList = ["SID", "Admin1", "User1", "User2"]
+        SEDConfig.takeOwnership(userList)
         pass
 
     elif opts.operation == 'unlockband':
